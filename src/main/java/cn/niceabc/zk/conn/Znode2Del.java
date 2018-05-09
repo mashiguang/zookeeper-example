@@ -28,6 +28,13 @@ public class Znode2Del implements Watcher {
         }
         log.debug("zk session established.");
 
+        String path3 = zk.create("/zk-test-persistent",
+                "this is value".getBytes(),
+                ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                CreateMode.PERSISTENT);
+        log.debug("success create znode {}", path3);
+
+
         Stat stat = zk.exists("/zk-test-persistent", null);
         if (stat != null) {
 
@@ -38,6 +45,7 @@ public class Znode2Del implements Watcher {
                             log.debug("i: {}", i);
                             log.debug("s: {}", s);
                             log.debug("o: {}", o);
+                            log.debug("removed.");
                         }
                     },
                     "this is a context.");
