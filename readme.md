@@ -8,3 +8,6 @@ Conn2，复用sessionid, sessonPasswd的意义是什么？
 
 del未成功，cn.niceabc.zk.conn.Znode2Del
 返回101代表什么?
+
+书上说-1是万能version，但测试过程中，用-1还是报了BadVersionException，
+cn.niceabc.zk.conn.ZnodeSetData
