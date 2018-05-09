@@ -45,14 +45,17 @@ public class ZnodeSetData implements Watcher {
         log.debug("value1: {}", value1);
         log.debug("stat.version: {}", stat.getVersion());
 
-        zk.setData("/zk-test-persistent", "456".getBytes(), stat.getVersion());
+        zk.setData(path, "456".getBytes(), stat.getVersion());
         String value2 = new String(zk.getData(path, false, stat));
         log.debug("value2: {}", value2);
         log.debug("stat.version: {}", stat.getVersion());
 
+        stat = zk.setData(path, "789".getBytes(), -1);
+        log.debug("stat.version: {}", stat.getVersion());
+
         // illegal stat.version
         try {
-            zk.setData("/zk-test-persistent", "789".getBytes(), -1);
+            zk.setData(path, "789".getBytes(), 99);
         } catch (KeeperException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
