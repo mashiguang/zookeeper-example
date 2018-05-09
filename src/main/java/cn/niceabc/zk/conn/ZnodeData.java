@@ -40,8 +40,8 @@ public class ZnodeData implements Watcher {
 
         Stat stat3 = new Stat();
         String value3 = new String(zk.getData("/zk-test-persistent", false, stat3));
-        log.debug("value3: ", value3);
-        log.debug("stat.version: ", stat3.getVersion());
+        log.debug("value3: {}", value3);
+        log.debug("stat.version: {}", stat3.getVersion());
 
 
 
