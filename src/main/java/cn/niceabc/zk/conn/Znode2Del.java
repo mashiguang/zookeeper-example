@@ -1,6 +1,7 @@
 package cn.niceabc.zk.conn;
 
 import org.apache.zookeeper.*;
+import org.apache.zookeeper.data.Stat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,33 +28,21 @@ public class Znode2Del implements Watcher {
         }
         log.debug("zk session established.");
 
-        zk.delete("/zk-test-ephemeral",
-                1,
-                new AsyncCallback.VoidCallback() {
-                    public void processResult(int i, String s, Object o) {
-                        log.debug("i: {}", i);
-                        log.debug("s: {}", s);
-                        log.debug("o: {}", o);
-                    }
-                },
-                "this is a context.");
+        Stat stat = zk.exists("/zk-test-persistent", null);
+        if (stat != null) {
 
-        /*zk.create("/zk-test-ephemeral",
-                "".getBytes(),
-                ZooDefs.Ids.OPEN_ACL_UNSAFE,
-                CreateMode.EPHEMERAL_SEQUENTIAL,
-                new AsyncCallback.StringCallback() {
-                    public void processResult(int i, String s, Object o, String s1) {
-                        log.debug("znode created. {}", s);
-                        log.debug("i: {}", i);
-                        log.debug("s: {}", s);
-                        log.debug("o: {}", o);
-                        log.debug("s1: {}", s1);
-                    }
-                },
-                "this is a context."
-        );*/
-        //log.debug("success create znode {}", path1);
+            zk.delete("/zk-test-persistent",
+                    stat.getVersion(),
+                    new AsyncCallback.VoidCallback() {
+                        public void processResult(int i, String s, Object o) {
+                            log.debug("i: {}", i);
+                            log.debug("s: {}", s);
+                            log.debug("o: {}", o);
+                        }
+                    },
+                    "this is a context.");
+
+        }
 
         System.in.read();
     }
