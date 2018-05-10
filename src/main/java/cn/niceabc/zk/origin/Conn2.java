@@ -1,4 +1,4 @@
-package cn.niceabc.zk.conn;
+package cn.niceabc.zk.origin;
 
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
