@@ -8,3 +8,5 @@ Conn2，复用sessionid, sessonPasswd的意义是什么？
 
 del未成功，cn.niceabc.zk.conn.Znode2Del
 返回101代表什么?
+
+Ephemeral, Persistent这两种节点生命周期有什么不同？
