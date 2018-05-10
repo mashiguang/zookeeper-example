@@ -10,3 +10,5 @@ del未成功，cn.niceabc.zk.origin.Znode2Del
 返回101代表什么?
 
 Ephemeral, Persistent这两种节点生命周期有什么不同？
+
+Ephemeral节点不能有子节点？
