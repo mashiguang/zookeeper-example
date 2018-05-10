@@ -12,3 +12,4 @@ del未成功，cn.niceabc.zk.origin.Znode2Del
 Ephemeral, Persistent这两种节点生命周期有什么不同？
 
 Ephemeral节点不能有子节点？
+zk中规定所有非叶子节点必须是持久节点，即临时节点只能用在叶子节点。
